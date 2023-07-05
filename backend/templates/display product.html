@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% extends 'intro.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="row"style="width:2100px">
+              <div class="col-lg-6 grid-margin stretch-card" style="width:400px">
+                <div class="card" >
+                  <div class="card-body">
+                    <h4 class="card-title">PRODUCT</h4>
+                    <p class="card-description"> <code></code>
+                    </p>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>NAME</th>
+                            <th>CATEGORY</th>
+                              <th>PRICE</th>
+                              <th>QUANTITY</th>
+<!--                              <th>DESCRIPTIONS</th>-->
+                            <th>IMAGE</th>
+                              <th>UPDATE</th>
+                              <th>REMOVE</th>
+                          </tr>
+                        </thead>
+                          {% for i in data %}
+                        <tr>
+                            <td>{{ i.Name }}</td>
+                            <td>{{ i.Category }}</td>
+                            <td>{{ i.Price }}</td>
+                            <td>{{ i.Qnty }}</td>
+<!--                            <td>{{ i.Description}}</td>-->
+                            <td><img src="{{ i.Image.url }}"></td>
+                            <td>
+                                <form action="{% url 'editproduct' dataid=i.id %}">
+                                <button type="submit" class="btn btn-primary mr-2">Edit</button>
+                                 </form>
+                            </td>
+                            <td>
+                                <form action="{% url 'deleteproduct' dataid=i.id %}">
+                                <button type="submit" class="btn btn-primary mr-2">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                          {% endfor %}
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+</body>
+</html>
+{% endblock %}

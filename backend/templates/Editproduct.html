@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends 'intro.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">ADD PRODUCT</h4>
+                    <p class="card-description">  </p>
+                    <form class="forms-sample" method="post"  action="{% url 'updateproduct' dataid=data.id%}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <label for="exampleInputName1">Name</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="name" value="{{data.Name}}">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputName1">category</label>
+                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Name" name="category" value="{{data.Category}}">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputName1">Price</label>
+                        <input type="text" class="form-control" id="exampleInputName3" placeholder="Name" name="price" value="{{data.Price}}">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputName1">Quantity</label>
+                        <input type="text" class="form-control" id="exampleInputName4" placeholder="Name" name="quantity" value="{{data.Qnty}}">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleTextarea1">Discriptions</label>
+                        <textarea class="form-control" id="exampleTextarea1" rows="4" name="description"value="{{data.Description}}"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label>File upload</label><br><br>
+                        <input type="file" name="image" value="{{data.Image}}">
+                      </div>
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+<!--                      <button class="btn btn-dark">Cancel</button>-->
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+
+</body>
+</html>
+{% endblock %}
